@@ -9,7 +9,7 @@ import { useToast } from "@/hooks/use-toast";
 import { useTheme } from "next-themes";
 import { Toaster as Sonner, toast as sonnerToast } from "sonner";
 import * as AlertDialogPrimitive from "@radix-ui/react-alert-dialog";
-import { buttonVariants } from "@/components/ui/button";
+import { Button } from "@/components/ui/MiscUI";
 import * as ProgressPrimitive from "@radix-ui/react-progress";
 import { cn } from "@/lib/utils";
 
@@ -303,7 +303,7 @@ const AlertDialogAction = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <AlertDialogPrimitive.Action
     ref={ref}
-    className={cn(buttonVariants(), className)}
+    className={cn(Button.variants(), className)}
     {...props}
   />
 ));
@@ -315,7 +315,7 @@ const AlertDialogCancel = React.forwardRef<
   <AlertDialogPrimitive.Cancel
     ref={ref}
     className={cn(
-      buttonVariants({ variant: "outline" }),
+      Button.variants({ variant: "outline" }),
       "mt-2 sm:mt-0",
       className
     )}

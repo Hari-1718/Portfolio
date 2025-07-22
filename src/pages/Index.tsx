@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Mail, MapPin, Phone, ExternalLink, Github, Linkedin, Download, ChevronDown, Code, Database, Brain, Globe, Award, User } from 'lucide-react';
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/MiscUI";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/MiscUI";
 import { Input, Textarea } from "@/components/ui/FormElements";
 import { Badge } from "@/components/ui/Feedback";

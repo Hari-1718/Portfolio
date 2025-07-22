@@ -6,13 +6,13 @@ import * as AvatarPrimitive from "@radix-ui/react-avatar";
 import { cn } from "@/lib/utils";
 import { ChevronLeft, ChevronRight, ArrowLeft, ArrowRight, GripVertical } from "lucide-react";
 import { DayPicker } from "react-day-picker";
-import { buttonVariants } from "@/components/ui/button";
 import useEmblaCarousel, { type UseEmblaCarouselType } from "embla-carousel-react";
 import * as RechartsPrimitive from "recharts";
 import * as CollapsiblePrimitive from "@radix-ui/react-collapsible";
 import * as ResizablePrimitive from "react-resizable-panels";
 import * as AspectRatioPrimitive from "@radix-ui/react-aspect-ratio";
 import * as SwitchPrimitives from "@radix-ui/react-switch";
+import { cva, type VariantProps } from "class-variance-authority";
 
 // --- Avatar ---
 const Avatar = React.forwardRef<
@@ -782,6 +782,43 @@ const Switch = React.forwardRef<
 ));
 Switch.displayName = SwitchPrimitives.Root.displayName;
 
+// --- Button ---
+const buttonVariants = cva(
+  "inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none bg-primary text-primary-foreground hover:bg-primary/90",
+  {
+    variants: {
+      variant: {
+        default: "bg-primary text-primary-foreground hover:bg-primary/90",
+        outline: "border border-input bg-background hover:bg-accent hover:text-accent-foreground",
+        ghost: "bg-transparent hover:bg-accent hover:text-accent-foreground",
+      },
+      size: {
+        default: "h-10 px-4 py-2",
+        sm: "h-9 px-3",
+        lg: "h-11 px-8",
+        icon: "h-10 w-10",
+      },
+    },
+    defaultVariants: {
+      variant: "default",
+      size: "default",
+    },
+  }
+);
+
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>, VariantProps<typeof buttonVariants> {}
+
+const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+  ({ className, variant, size, ...props }, ref) => (
+    <button
+      className={cn(buttonVariants({ variant, size }), className)}
+      ref={ref}
+      {...props}
+    />
+  )
+);
+Button.displayName = "Button";
+
 export {
   Avatar,
   AvatarImage,
@@ -812,4 +849,6 @@ export {
   ResizableHandle,
   AspectRatio,
   Switch,
+  Button,
+  buttonVariants,
 }; 

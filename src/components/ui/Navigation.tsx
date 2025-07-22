@@ -9,12 +9,11 @@ import { ChevronDown, ChevronRight, PanelLeft, MoreHorizontal, ChevronLeft } fro
 import * as MenubarPrimitive from "@radix-ui/react-menubar";
 import { Slot } from "@radix-ui/react-slot";
 import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
+import { Button, ButtonProps, buttonVariants } from "@/components/ui/MiscUI";
 import { Separator } from "@/components/ui/separator";
 import { Sheet, SheetContent } from "@/components/ui/Overlays";
 import { Skeleton } from "@/components/ui/Feedback";
 import { useIsMobile } from "@/hooks/use-mobile";
-import { ButtonProps, buttonVariants } from "@/components/ui/button";
 
 // NavigationMenu
 const NavigationMenu = React.forwardRef<
